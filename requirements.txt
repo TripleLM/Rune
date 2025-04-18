@@ -1,0 +1,10 @@
+numpy>=1.20.0
+sounddevice>=0.4.4
+scipy>=1.7.0
+RPi.GPIO>=0.7.0
+PyYAML>=6.0
+# Dependencies for offline AI models
+# These will depend on the specific models used
+# tensorflow-lite or tflite-runtime for TF models
+# onnxruntime for ONNX models
+# pytorch or torch for PyTorch models 

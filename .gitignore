@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# Models (these could be large)
+models/*.bin
+models/*.pt
+models/*.onnx
+
+# Logs
+*.log
+logs/
+
+# Config (except defaults)
+config/*
+!config/default.yml
+
+# OS specific
+.DS_Store
+.idea/
+.vscode/
+*.swp 

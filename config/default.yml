@@ -1,0 +1,21 @@
+# Rune default configuration
+
+# Audio settings
+audio:
+  sample_rate: 16000
+  channels: 1
+  input_device: null  # Will use system default
+  output_device: null  # Will use system default
+
+# Button interface
+ptt_pin: 17  # GPIO pin for push-to-talk button
+
+# Assistant settings
+assistant:
+  model_path: "models/assistant_model"
+  model_type: "local_llm"  # Type of model to use
+
+# Morse code settings
+morse:
+  dot_duration: 0.1  # seconds
+  frequency: 800  # Hz 
