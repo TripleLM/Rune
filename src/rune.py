@@ -8,6 +8,7 @@ import logging
 import argparse
 import signal
 from pathlib import Path
+import yaml
 
 # Import modules
 from audio.recorder import AudioRecorder
@@ -48,16 +49,51 @@ class Rune:
     def load_config(self):
         """Load configuration from file"""
         logger.info(f"Loading configuration from {self.config_path}")
-        # TODO: Implement actual config loading
-        self.config = {
+        
+        default_config = {
             "audio": {
                 "sample_rate": 16000,
-                "channels": 1
+                "channels": 1,
+                "input_device": None,
+                "output_device": None,
             },
+            "ptt_pin": 17,
             "assistant": {
-                "model_path": "models/assistant_model"
+                "model_path": "models/assistant_model",
+                "model_type": "local_llm",
+                "voice_model_type": "piper",
+                "llm_model_name": "mistral_7b"
+            },
+            "morse": {
+                "dot_duration": 0.1,
+                "frequency": 800
             }
         }
+        
+        try:
+            if self.config_path.is_file():
+                with open(self.config_path, 'r') as f:
+                    loaded_config = yaml.safe_load(f)
+                    if loaded_config:
+                        self.config = default_config.copy()
+                        for key, value in loaded_config.items():
+                            if key in self.config and isinstance(self.config[key], dict) and isinstance(value, dict):
+                                self.config[key].update(value)
+                            else:
+                                self.config[key] = value
+                        logger.info("Configuration loaded successfully.")
+                    else:
+                        logger.warning(f"Configuration file {self.config_path} is empty. Using default config.")
+                        self.config = default_config
+            else:
+                logger.warning(f"Configuration file {self.config_path} not found. Using default config.")
+                self.config = default_config
+        except yaml.YAMLError as e:
+            logger.error(f"Error parsing configuration file {self.config_path}: {e}. Using default config.")
+            self.config = default_config
+        except Exception as e:
+            logger.error(f"Error loading configuration: {e}. Using default config.")
+            self.config = default_config
     
     def handle_button_press(self):
         """Handle push-to-talk button press"""

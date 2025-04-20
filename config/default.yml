@@ -12,8 +12,13 @@ ptt_pin: 17  # GPIO pin for push-to-talk button
 
 # Assistant settings
 assistant:
-  model_path: "models/assistant_model"
-  model_type: "local_llm"  # Type of model to use
+  model_path: "models/llm" # Renamed for clarity, path to LLM model dir
+  model_type: "local_llm"  # Type of model to use (e.g., local_llm, remote_api)
+  llm_model_name: "mistral_7b" # Specific LLM model name (e.g., mistral_7b, llama2_7b)
+  # llm_model_file: "mistral-7b-instruct-v0.1.Q4_K_M.gguf" # Optional: Specify exact model file if needed
+  voice_model_type: "piper"  # Type of voice model (e.g., piper, espeak)
+  voice_model_path: "models/tts/en_US-lessac-medium.onnx" # Path to the Piper ONNX model file
+  # voice_model_config_path: "models/tts/en_US-lessac-medium.onnx.json" # Optional: Path to Piper model config json (if needed)
 
 # Morse code settings
 morse:
