@@ -1,6 +1,6 @@
 # Rune - Offline Local AI Assistant
 
-Rune is an open-source, completely offline AI voice assistant that runs on a Raspberry Pi CM5. It's designed to respect privacy by operating entirely locally without sending any data to external servers. You can purchase a kit here - https://triplerune.com/products/rune
+Rune is an open-source, completely offline AI voice assistant that runs on a Raspberry Pi CM5. It's designed to respect privacy by operating entirely locally without sending any data to external servers.
 
 ## Features
 
